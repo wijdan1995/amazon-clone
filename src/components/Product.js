@@ -4,7 +4,7 @@ import './Product.css'
 function Product({id, title, price, rating, image}) {
     const stars = []
     for (let i = 0; i < rating; i++) {
-        stars.push(<p>⭐️</p>)
+        stars.push(<span role="img" aria-label='star'>⭐</span>)
       }
     return (
         <div className='product'>
@@ -18,7 +18,7 @@ function Product({id, title, price, rating, image}) {
                     {stars}
                 </div>
             </div>
-            <img src={image}/>
+            <img src={image} alt=''/>
             <button>Add to Cart</button>
         </div>
     )
