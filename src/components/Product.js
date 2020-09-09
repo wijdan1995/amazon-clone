@@ -1,11 +1,29 @@
 import React from 'react'
+import { useStateValue } from './StateProvider'
 import './Product.css'
 
 function Product({id, title, price, rating, image}) {
+    const [ { cart }, dispach] = useStateValue()
+
+    const addToCart = () => {
+        dispach({
+            type: 'ADD_TO_CART',
+            item: {
+                id,
+                title,
+                image,
+                price,
+                rating
+            }
+        })
+    }
+    
     const stars = []
     for (let i = 0; i < rating; i++) {
         stars.push(<span role="img" aria-label='star'>⭐</span>)
       }
+    
+    
     return (
         <div className='product'>
             <div className='product_info'>
@@ -19,7 +37,7 @@ function Product({id, title, price, rating, image}) {
                 </div>
             </div>
             <img src={image} alt=''/>
-            <button>Add to Cart</button>
+            <button onClick={addToCart}>Add to Cart</button>
         </div>
     )
 }
