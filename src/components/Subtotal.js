@@ -2,16 +2,17 @@ import React from 'react'
 import './Subtotal.css'
 import CurrencyFormat from 'react-currency-format'
 import { useStateValue } from './StateProvider'
+import { getCartTotal } from './reducer'
 
 function Subtotal() {
     const [ { cart }, dispach] = useStateValue()
-    const getCartTotal = (data) =>{
-    let calTotal = 0
-    for (let i = 0; i < data.length; i++) {
-        calTotal = calTotal+ data[i].price
-      }
-      return calTotal
-    }
+    // const getCartTotal = (data) =>{
+    // let calTotal = 0
+    // for (let i = 0; i < data.length; i++) {
+    //     calTotal = calTotal+ data[i].price
+    //   }
+    //   return calTotal
+    // }
     return (
         <div className='subtotal'>
             <CurrencyFormat 
