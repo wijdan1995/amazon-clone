@@ -17,6 +17,11 @@ const reducer = ( state, action ) => {
                 ...state,
                 cart: [...state.cart, action.item],
             }
+        case 'EMPTY_CART':
+            return {
+                ...state,
+                cart: [],
+            }
         case 'REMOVE_FROM_CART':
             // this only work if there is no multipal stuf of one thing
             // return {

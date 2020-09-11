@@ -1,42 +1,46 @@
-import React from 'react'
-import './Subtotal.css'
-import CurrencyFormat from 'react-currency-format'
-import { useStateValue } from './StateProvider'
-import { getCartTotal } from './reducer'
+import React from "react";
+import "./Subtotal.css";
+import CurrencyFormat from "react-currency-format";
+import { useStateValue } from "./StateProvider";
+import { getCartTotal } from "./reducer";
+import { useHistory } from "react-router-dom";
 
 function Subtotal() {
-    const [ { cart }, dispach] = useStateValue()
-    // const getCartTotal = (data) =>{
-    // let calTotal = 0
-    // for (let i = 0; i < data.length; i++) {
-    //     calTotal = calTotal+ data[i].price
-    //   }
-    //   return calTotal
-    // }
-    return (
-        <div className='subtotal'>
-            <CurrencyFormat 
-                renderText={(value) => (
-                    <>
-                        <p>
-                            Subtotal ({cart?.length} items):
-                            <strong>{value}</strong>
-                        </p>
-                        <small className='subtotal_gift'>
-                            <input type='checkbox' />
-                            This order contains a gift
-                        </small>
-                    </>
-                )}
-                decimalScale={2}
-                value={getCartTotal(cart)}
-                displayType={'text'}
-                thousandSeparator={true}
-                prefix={'$'}
-            />
-            <button>Proceed to Checkout</button>
-        </div>
-    )
+  const history = useHistory();
+  const [{ cart }, dispatch] = useStateValue();
+  // const getCartTotal = (data) =>{
+  // let calTotal = 0
+  // for (let i = 0; i < data.length; i++) {
+  //     calTotal = calTotal+ data[i].price
+  //   }
+  //   return calTotal
+  // }
+  return (
+    <div className="subtotal">
+      <CurrencyFormat
+        renderText={(value) => (
+          <>
+            <p>
+              Subtotal ({cart?.length} items):
+              <strong>{value}</strong>
+            </p>
+            <small className="subtotal_gift">
+              <input type="checkbox" />
+              This order contains a gift
+            </small>
+          </>
+        )}
+        decimalScale={2}
+        value={getCartTotal(cart)}
+        displayType={"text"}
+        thousandSeparator={true}
+        prefix={"$"}
+      />
+      <button onClick={(e) => history.push("/payment")}>
+        Proceed to Checkout
+      </button>
+    </div>
+  );
 }
 
-export default Subtotal
+export default Subtotal;
