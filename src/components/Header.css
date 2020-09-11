@@ -9,6 +9,11 @@
 
 }
 
+.header a {
+    text-decoration: none;
+
+}
+
 .header_logo {
     width: 100px;
     object-fit: contain;
@@ -39,6 +44,8 @@
 .header_nav {
     display: flex;
     justify-content: space-evenly;
+    box-sizing: border-box;
+
 }
 
 .header_option {
@@ -47,6 +54,13 @@
     margin-left: 10px;
     margin-right: 10px;
     color: white;
+    padding: 2px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+
+.header_option:hover {
+    border: 1px solid white;
 }
 
 .header_optionLineOne {
@@ -62,6 +76,14 @@
     display: flex;
     align-items: center;
     color: white;
+    height: 100%;
+    padding: 2px 2px 0 2px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+
+.header_optionCart:hover {
+    border: 1px solid white;
 }
 
 .header_cartCount {
